@@ -141,3 +141,4 @@ C:\Users\Bertoni\Desktop\ApiAutos\ApiAutos\obj\Debug\net8.0\refint\ApiAutos.dll
 C:\Users\Bertoni\Desktop\ApiAutos\ApiAutos\obj\Debug\net8.0\ApiAutos.pdb
 C:\Users\Bertoni\Desktop\ApiAutos\ApiAutos\obj\Debug\net8.0\ApiAutos.genruntimeconfig.cache
 C:\Users\Bertoni\Desktop\ApiAutos\ApiAutos\obj\Debug\net8.0\ref\ApiAutos.dll
+C:\Users\Bertoni\Desktop\ApiAutos\ApiAutos\obj\Debug\net8.0\ApiAutos.sourcelink.json

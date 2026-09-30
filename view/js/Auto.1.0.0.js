@@ -25,7 +25,7 @@ function mostrarAutos(data) {
 
     tr.insertCell(2).textContent = element.anio;
 
-    tr.insertCell(3).textContent = element.patente;
+    tr.insertCell(3).textContent = element.patente.toUpperCase();
 
     tr.insertCell(4).textContent = element.km;
 
