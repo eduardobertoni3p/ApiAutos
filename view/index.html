@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Gestión de Autos Bertoni</title>
+
+    <link rel="icon" type="image/png" href="img/870770.png">
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="bootstrap/css/bootstrap.min.css">
+</head>
+
+<body>
+
+    <div class="container mt-5">
+
+
+        <div class="text-center mb-4">
+            <h2 class="fw-bold">Gestión de Autos</h2>
+            <p class="text-muted">Listado de autos registrados</p>
+        </div>
+
+
+        <div class="card shadow-sm mb-4">
+
+            <div class="card-header bg-primary text-white">
+                <h5 class="mb-0">Datos del auto</h5>
+            </div>
+
+            <div class="card-body">
+
+                <div class="row g-3">
+
+                    <div class="col-md-6 col-lg-3">
+                        <label for="marca" class="form-label">Marca</label>
+                        <input type="text" class="form-control" id="marca" placeholder="Ej: Toyota">
+                    </div>
+
+                    <div class="col-md-6 col-lg-3">
+                        <label for="modelo" class="form-label">Modelo</label>
+                        <input type="text" class="form-control" id="modelo" placeholder="Ej: Corolla">
+                    </div>
+
+                    <div class="col-md-6 col-lg-3">
+                        <label for="anio" class="form-label">Año</label>
+                        <input type="number" class="form-control" id="anio" placeholder="Ej: 2020">
+                    </div>
+
+                    <div class="col-md-6 col-lg-3">
+                        <label for="patente" class="form-label">Patente</label>
+                        <input type="text" class="form-control" id="patente" placeholder="Ej: ABC123">
+                    </div>
+
+                    <div class="col-md-6 col-lg-3">
+                        <label for="km" class="form-label">Km</label>
+                        <input type="number" class="form-control" id="km" placeholder="Ej: 50000">
+                    </div>
+
+                    <div class="col-md-6 col-lg-3">
+                        <label for="fechaIngreso" class="form-label">Fecha de ingreso</label>
+                        <input type="date" class="form-control" id="fechaIngreso">
+                    </div>
+
+                    <div class="col-md-6 col-lg-3 d-flex align-items-end">
+                        <div class="form-check">
+                            <input class="form-check-input" type="checkbox" id="disponible" checked>
+                            <label class="form-check-label" for="disponible">Disponible</label>
+                        </div>
+                    </div>
+
+                </div>
+
+                <div class="mt-4 text-end">
+                    <button type="button" class="btn btn-primary" onclick="AgregarAuto()">
+                        Agregar auto
+                    </button>
+                </div>
+
+            </div>
+        </div>
+
+        <!-- modal editar -->
+        <div class="modal" tabindex="-1" id="modalEditar">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title">Editar auto</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+
+                        <input type="hidden" id="idEditar">
+
+                        <div class="mb-3">
+                            <label for="marcaEditar" class="form-label">Marca</label>
+                            <input type="text" class="form-control" id="marcaEditar" placeholder="Ej: Toyota">
+                        </div>
+
+                        <div class="mb-3">
+                            <label for="modeloEditar" class="form-label">Modelo</label>
+                            <input type="text" class="form-control" id="modeloEditar" placeholder="Ej: Corolla">
+                        </div>
+
+                        <div class="mb-3">
+                            <label for="anioEditar" class="form-label">Año</label>
+                            <input type="number" class="form-control" id="anioEditar" placeholder="Ej: 2020">
+                        </div>
+
+                        <div class="mb-3">
+                            <label for="patenteEditar" class="form-label">Patente</label>
+                            <input type="text" class="form-control" id="patenteEditar" placeholder="Ej: ABC123">
+                        </div>
+
+                        <div class="mb-3">
+                            <label for="kmEditar" class="form-label">Km</label>
+                            <input type="number" class="form-control" id="kmEditar" placeholder="Ej: 50000">
+                        </div>
+
+                        <div class="mb-3">
+                            <label for="fechaIngresoEditar" class="form-label">Fecha de ingreso</label>
+                            <input type="date" class="form-control" id="fechaIngresoEditar">
+                        </div>
+
+                        <div class="form-check">
+                            <input class="form-check-input" type="checkbox" id="disponibleEditar">
+                            <label class="form-check-label" for="disponibleEditar">Disponible</label>
+                        </div>
+
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+                        <button type="button" class="btn btn-primary" onclick="EditarAuto()">Guardar</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+        <!-- Tabla -->
+        <div class="card shadow-sm">
+
+            <div class="card-header">
+                <h5 class="mb-0">Listado de autos</h5>
+            </div>
+
+            <div class="card-body">
+
+                <div class="table-responsive">
+
+                    <table class="table table-hover align-middle">
+
+                        <thead class="table-dark">
+                            <tr>
+                                <th>Marca</th>
+                                <th>Modelo</th>
+                                <th>Año</th>
+                                <th>Patente</th>
+                                <th>Km</th>
+                                <th>Fecha de ingreso</th>
+                                <th>Disponible</th>
+                                <th>Acciones</th>
+                            </tr>
+                        </thead>
+
+                        <tbody id="tablaAuto">
+                        </tbody>
+
+                    </table>
+
+                </div>
+
+            </div>
+        </div>
+
+    </div>
+
+
+    <script src="bootstrap/js/bootstrap.min.js"></script>
+    <script src="js/Auto.1.0.0.js"></script>
+
+</body>
+
+</html>
